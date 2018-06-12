@@ -6,7 +6,7 @@
 2. Copy and paste the script osm2maya.py in the Script Editor of Maya
 3. Select all the script code and click on (>) Run symbol above the console.
 
-[screenshot after done](https://raw.githubusercontent.com/mkagenius/osm2maya/master/osm2maya.png)
+![screenshot after done](https://raw.githubusercontent.com/mkagenius/osm2maya/master/osm2maya.png)
 
 #### Note: This is not a perfect script, but it gets something going.
 
