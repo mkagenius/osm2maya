@@ -8,7 +8,7 @@
 
 ![screenshot after done](https://raw.githubusercontent.com/mkagenius/osm2maya/master/osm2maya.png)
 
-Sample Arnold Render below (aiAtmosphereVolume and aiSky Enviroment settings)
+Sample Arnold Render below (aiAtmosphereVolume and aiSky Environment settings)
 
 ![arnold render](https://raw.githubusercontent.com/mkagenius/osm2maya/master/city_bangalore.jpg)
 
