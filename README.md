@@ -8,6 +8,10 @@
 
 ![screenshot after done](https://raw.githubusercontent.com/mkagenius/osm2maya/master/osm2maya.png)
 
+Sample Arnold Render below (aiAtmosphereVolume and aiSky Enviroment settings)
+
+![arnold render](https://raw.githubusercontent.com/mkagenius/osm2maya/master/city_bangalore.jpg)
+
 #### Note: This is not a perfect script, but it gets something going.
 
 
