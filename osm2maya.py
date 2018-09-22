@@ -5,8 +5,10 @@ import random
 import xml.dom.minidom
 
 
-doc = xml.dom.minidom.parse("/Users/manish/Downloads/map.osm")
+doc = xml.dom.minidom.parse("/Users/manish/Downloads/indiranagar.osm")
 
+
+# building:levels
 
 
 all_ways = doc.getElementsByTagName("way")
@@ -42,7 +44,20 @@ for b in buildings:
 		if ch.tagName == 'nd':
 			node_id = ch.attributes['ref'].value
 			lst.append(id_to_tuple[node_id])
-	all_buildings.append(lst)
+	
+	tags = b.getElementsByTagName('tag')
+	level = 1
+	for tag in tags:
+	    if tag.tagName == 'tag':
+	        if tag.attributes['k'].value == 'building:levels':
+	            try:
+	                level = int(tag.attributes['v'].value)
+	            except:
+	                level = 1
+	
+	 
+	
+	all_buildings.append((lst, level))
 
 
 print(all_buildings[0])
@@ -51,8 +66,8 @@ all_buildings = sorted(all_buildings)
 
 sz = len(all_buildings)
 
-start_lon = float(all_buildings[sz/2][0][0])
-start_lat = float(all_buildings[sz/2][0][1])
+start_lon = float(all_buildings[sz/2][0][0][0])
+start_lat = float(all_buildings[sz/2][0][0][1])
 
 
 print(all_buildings[0])
@@ -70,9 +85,12 @@ buildings_xy = []
 
 for lst in all_buildings:
     tmp = [] 
-    for i in lst:
+    for i in lst[0]:
         tmp.append(get_xy(i[0], i[1]))
-    buildings_xy.append(tmp)
+        
+    # height froom levels
+    h = lst[1]
+    buildings_xy.append((tmp, h))
 
 print(buildings_xy[0])
 
@@ -90,18 +108,18 @@ all_poly = []
 
 for lst in buildings_xy:
     tmp = []
-    for i in lst:
+    for i in lst[0]:
         (x,z) = i
         x/=100
         z/=100
         y = 0
         tmp.append((x,y,z))
-    
+    h = lst[1]
     res = cmds.polyCreateFacet( p=tmp, name='buildingpoly#')
     
     all_poly.append(res)
     thickness = random.uniform(0.1, 0.2)
-    cmds.polyExtrudeFacet(res[0], kft=1, thickness=thickness)
+    cmds.polyExtrudeFacet(res[0], kft=1, thickness=(h / 10.0))
     
 
 
