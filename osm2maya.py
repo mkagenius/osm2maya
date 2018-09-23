@@ -108,6 +108,7 @@ all_poly = []
 
 for lst in buildings_xy:
     tmp = []
+
     for i in lst[0]:
         (x,z) = i
         x/=100
@@ -116,10 +117,19 @@ for lst in buildings_xy:
         tmp.append((x,y,z))
     h = lst[1]
     res = cmds.polyCreateFacet( p=tmp, name='buildingpoly#')
-    
+  
     all_poly.append(res)
     thickness = random.uniform(0.1, 0.2)
-    cmds.polyExtrudeFacet(res[0], kft=1, thickness=(h / 10.0))
+    assert h >= 0
+    
+    normals = cmds.polyInfo(res[0], fn=1)
+    normal = float(normals[0].split(":")[1].split()[1])
+    if normal < 0:
+        # some building have normal in other direction, this fixes that
+        h *= -1
+    
+    # TO avoid mirror image multiply with -1
+    cmds.polyExtrudeFacet(res[0], kft=1, thickness=(-h / 10.0))
     
 
 
