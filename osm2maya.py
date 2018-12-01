@@ -111,7 +111,7 @@ for lst in buildings_xy:
 
     for i in lst[0]:
         (x,z) = i
-        x/=100
+        x/=-100
         z/=100
         y = 0
         tmp.append((x,y,z))
@@ -124,7 +124,7 @@ for lst in buildings_xy:
     
     normals = cmds.polyInfo(res[0], fn=1)
     normal = float(normals[0].split(":")[1].split()[1])
-    if normal < 0:
+    if normal >= 0:
         # some building have normal in other direction, this fixes that
         h *= -1
     
