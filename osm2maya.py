@@ -124,13 +124,17 @@ for lst in buildings_xy:
     
     normals = cmds.polyInfo(res[0], fn=1)
     normal = float(normals[0].split(":")[1].split()[1])
-    if normal >= 0:
-        # some building have normal in other direction, this fixes that
-        h *= -1
     
-    # TO avoid mirror image multiply with -1
-    cmds.polyExtrudeFacet(res[0], kft=1, thickness=(-h / 10.0))
+    # For reversed normals, Just redraw in anticlockwise
+    if normal < 0:
+        cmds.delete(res[0])
+        tmp.reverse()
+        res = cmds.polyCreateFacet( p=tmp, name='buildingpoly#')
+        normals = cmds.polyInfo(res[0], fn=1)
+        normal = float(normals[0].split(":")[1].split()[1])
+        
     
+    cmds.polyExtrudeFacet(res[0], kft=1, thickness=(h / 10.0)) 
 
 
 
