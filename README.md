@@ -10,7 +10,7 @@
 
 Sample Arnold Render below (aiAtmosphereVolume and aiSky Environment settings)
 
-![arnold render](https://raw.githubusercontent.com/mkagenius/osm2maya/master/city_bangalore.jpg)
+[![arnold render](https://img.youtube.com/vi/3-XonH_mMiU/0.jpg)](https://www.youtube.com/watch?v=3-XonH_mMiU)
 
 #### Note: This is not a perfect script, but it gets something going.
 
