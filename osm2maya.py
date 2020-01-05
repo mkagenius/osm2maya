@@ -5,7 +5,7 @@ import random
 import xml.dom.minidom
 
 
-doc = xml.dom.minidom.parse("/Users/manish/Downloads/indiranagar.osm")
+doc = xml.dom.minidom.parse(filepath)
 
 
 # building:levels
