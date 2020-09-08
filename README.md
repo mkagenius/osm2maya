@@ -1,5 +1,7 @@
 # Convert any OSM map file to a City in Maya 
 
+[update] Now you can do this in Blender too osm2blender - https://github.com/mkagenius/osm2blender
+
 ## Generating a city from osm map file
 
 1. Get the .OSM file from http://openstreetmap.org/ (Search > Export) [free]
