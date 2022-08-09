@@ -66,8 +66,8 @@ all_buildings = sorted(all_buildings)
 
 sz = len(all_buildings)
 
-start_lon = float(all_buildings[sz/2][0][0][0])
-start_lat = float(all_buildings[sz/2][0][0][1])
+start_lon = float(all_buildings[int(sz/2)][0][0][0])
+start_lat = float(all_buildings[int(sz/2)][0][0][1])
 
 
 print(all_buildings[0])
